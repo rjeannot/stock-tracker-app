@@ -1,0 +1,12 @@
+<div *ngIf="quoteList$ | async as quoteList; else loading">
+  <app-quote
+    *ngFor="let quote of quoteList"
+    [quote]="quote"
+    (remove)="removeStock($event)"
+  >
+  </app-quote>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

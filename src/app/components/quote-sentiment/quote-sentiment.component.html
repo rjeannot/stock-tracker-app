@@ -1,0 +1,26 @@
+<div class="sentiment" *ngIf="quoteSentiment$ | async as quoteSentiment; else loading">
+  <h2>{{ quoteSentiment.quoteIntro?.description ?? quoteSentiment.storedSymbol }} 
+    <span *ngIf="quoteSentiment.quoteIntro; else noData">({{ quoteSentiment.quoteIntro.displaySymbol }})</span>
+    <ng-template #noData>
+      (no data)
+    </ng-template>
+  </h2>
+
+  <div 
+    class="month"
+    *ngFor="let sentiment of quoteSentiment.sentimentList.data"
+  >
+    <h3>
+      {{ sentiment.year + '-' + sentiment.month + '-01' | date: 'MMMM' | uppercase}}
+      <span>{{ sentiment.change > 0 ? '🡹' : '🡻' }}</span>
+    </h3>
+    <ul>
+      <li>Change: {{ sentiment.change }}</li>
+      <li>MSPR: {{ sentiment.mspr }}</li>
+    </ul>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
