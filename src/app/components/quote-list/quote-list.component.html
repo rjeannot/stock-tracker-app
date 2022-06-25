@@ -1,4 +1,4 @@
-<div *ngIf="quoteList$ | async as quoteList; else loading">
+<div *ngIf="quoteList$ | async as quoteList">
   <app-quote
     *ngFor="let quote of quoteList"
     [quote]="quote"
@@ -7,6 +7,6 @@
   </app-quote>
 </div>
 
-<ng-template #loading>
+<!-- <ng-template #loading>
   <p>Loading...</p>
-</ng-template>
+</ng-template> -->

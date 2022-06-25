@@ -1,7 +1,7 @@
 export interface Quote {
   storedSymbol: string;
   quoteIntro?: QuoteIntro;
-  quoteData: QuoteData;
+  quoteData?: QuoteData;
 }
 
 export interface QuoteIntro {

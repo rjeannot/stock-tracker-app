@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { combineLatest, Observable, tap } from 'rxjs';
-import { filter, map, switchMap } from 'rxjs/operators';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { StoredStockListService } from 'src/app/shared/services/stored-stock-list.service';
-import { Quote } from 'src/app/shared/models/quote';
+import { defaultIfEmpty, filter, map, switchMap } from 'rxjs/operators';
+import { ApiService } from '../../shared/services/api.service';
+import { StoredStockListService } from '../../shared/services/stored-stock-list.service';
+import { Quote } from '../../shared/models/quote';
 
 @Component({
   selector: 'app-quote-list',
@@ -29,21 +29,22 @@ export class QuoteListComponent implements OnInit {
                 filter((symbols) => symbols.result.length > 0),
                 map((symbols) =>
                   symbols.result.find((v) => v.symbol === stock)
-                )
+                ),
+                defaultIfEmpty(null)
               ),
-              this.apiService.getQuoteData(stock)
+              this.apiService.getQuoteData(stock).pipe(defaultIfEmpty(null))
             ]).pipe(
               map(([quoteIntro, quoteData]) => {
                 const quote: Quote = {
                   storedSymbol: stock,
-                  quoteIntro,
-                  quoteData,
+                  quoteIntro: quoteIntro ?? undefined,
+                  quoteData: quoteData ?? undefined,
                 };
                 return quote;
               })
             );
           })
-        )
+        ).pipe(defaultIfEmpty([]))
       )
     );
   }

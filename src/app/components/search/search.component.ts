@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { StoredStockListService } from 'src/app/shared/services/stored-stock-list.service';
+import { StoredStockListService } from '../../shared/services/stored-stock-list.service';
 
 @Component({
   selector: 'app-search',

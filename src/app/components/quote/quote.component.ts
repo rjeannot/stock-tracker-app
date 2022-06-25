@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Quote } from 'src/app/shared/models/quote';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Quote } from '../../shared/models/quote';
 
 @Component({
   selector: 'app-quote',

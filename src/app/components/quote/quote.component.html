@@ -4,15 +4,15 @@
     <ng-template #noData>
       (no data)
     </ng-template>
-    <span *ngIf="quote.quoteIntro">{{ quote.quoteData.dp > 0 ? '🡹' : '🡻' }}</span>
+    <span *ngIf="quote.quoteIntro">{{ quote.quoteData!.dp > 0 ? '🡹' : '🡻' }}</span>
     <button (click)="removeStock()">X</button>
   </h2>
   <div class="data" *ngIf="quote.quoteIntro">
     <ul>
-      <li>Change today: {{ quote.quoteData.dp }}%</li>
-      <li>Current price: {{ quote.quoteData.c | currency: 'USD' }}</li>
-      <li>Opening price: {{ quote.quoteData.o | currency: 'USD' }}</li>
-      <li>Hight price: {{ quote.quoteData.h | currency: 'USD' }}</li>
+      <li>Change today: {{ quote.quoteData!.dp }}%</li>
+      <li>Current price: {{ quote.quoteData!.c | currency: 'USD' }}</li>
+      <li>Opening price: {{ quote.quoteData!.o | currency: 'USD' }}</li>
+      <li>Hight price: {{ quote.quoteData!.h | currency: 'USD' }}</li>
     </ul>
     <button [routerLink]="['sentiment', quote.storedSymbol]">Go to social sentiment details ></button>
   </div>

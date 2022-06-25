@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, Observable, of, tap } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { QuoteSentiment } from 'src/app/shared/models/quoteSentiment';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { Utils } from 'src/app/shared/utils';
+import { QuoteSentiment } from '../../shared/models/quoteSentiment';
+import { ApiService } from '../../shared/services/api.service';
+import { Utils } from '../../shared/utils';
 
 @Component({
   selector: 'app-quote-sentiment',
